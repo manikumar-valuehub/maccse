@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macpac Ltd. - Customer Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            min-height: 700px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Left Panel - Form */
+        .left-panel {
+            flex: 1;
+            padding: 50px;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .form-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-header {
+            margin-bottom: 30px;
+        }
+        
+        .form-header h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #ff4757;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        /* Right Panel - Information */
+        .right-panel {
+            flex: 1;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-header {
+            margin-bottom: 40px;
+        }
+        
+        .info-header h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .info-header p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .contact-section {
+            margin-bottom: 40px;
+        }
+        
+        .contact-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .contact-text p {
+            opacity: 0.9;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .address-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .address-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .address-section p {
+            margin-bottom: 8px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .business-hours {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .business-hours h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hours-item {
+            margin-bottom: 10px;
+        }
+        
+        .hours-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .hours-item p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .left-panel, .right-panel {
+                padding: 40px 30px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .left-panel, .right-panel {
+                padding: 30px 20px;
+            }
+            
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+        
+        /* Form validation styles */
+        .error {
+            border-color: #ff4757 !important;
+        }
+        
+        .error-message {
+            color: #ff4757;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Form -->
+        <div class="left-panel">
+            <div class="logo-area">
+                <div class="logo-circle">M</div>
+                <div class="logo-text">
+                    <h1>Macpac Ltd.</h1>
+                    <p>Customer Support Portal</p>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Submit Support Request</h2>
+                    <p>Fill out the form below and our team will respond within 24 hours</p>
+                </div>
+                
+                <form id="supportForm" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DKa00000EKrFN" method="POST">
+                    <input type="hidden" name="orgid" value="00DKa00000EKrFN">
+                    <input type="hidden" name="retURL" value="http://">
+                    <input type="hidden" id="external" name="external" value="1">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="required">Contact Name</label>
+                            <input id="name" maxlength="80" name="name" type="text" required>
+                            <div class="error-message" id="name-error">Please enter your name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input id="email" maxlength="80" name="email" type="email" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input id="phone" maxlength="40" name="phone" type="tel" required>
+                            <div class="error-message" id="phone-error">Please enter your phone number</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderNumber">Order Number</label>
+                            <input id="00NKa00000gGObY" maxlength="255" name="00NKa00000gGObY" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="required">Subject</label>
+                        <input id="subject" maxlength="80" name="subject" type="text" required>
+                        <div class="error-message" id="subject-error">Please enter a subject</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description" class="required">Description</label>
+                        <textarea id="description" name="description" placeholder="Please describe your issue in detail..." required></textarea>
+                        <div class="error-message" id="description-error">Please describe your issue</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Right Panel - Information -->
+        <div class="right-panel">
+            <div class="info-header">
+                <h2>Get in Touch</h2>
+                <p>Contact us through any of the following channels. We're here to help you with any questions or concerns.</p>
+            </div>
+            
+            <div class="contact-section">
+                <h3><i class="fas fa-headset"></i> Contact Details</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Support</h4>
+                            <p>0161 442 1642<br>Available during business hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-fax"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Fax</h4>
+                            <p>0161 442 1643<br>Available 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Support</h4>
+                            <p>support@macpac-ltd.co.uk<br>Response within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="address-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                <p>Barton Road,</p>
+                <p>Heaton Mersey Industrial Estate,</p>
+                <p>Stockport,</p>
+                <p>Cheshire, SK4 3EG</p>
+            </div>
+            
+            <div class="business-hours">
+                <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                <div class="hours-item">
+                    <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                </div>
+                <div class="hours-item">
+                    <p><strong>Saturday:</strong> 9:00 AM - 1:00 PM</p>
+                </div>
+                <div class="hours-item">
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            resetErrors();
+            
+            // Validate required fields
+            let isValid = true;
+            const requiredFields = [
+                { id: 'name', errorId: 'name-error' },
+                { id: 'email', errorId: 'email-error' },
+                { id: 'phone', errorId: 'phone-error' },
+                { id: 'subject', errorId: 'subject-error' },
+                { id: 'description', errorId: 'description-error' }
+            ];
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field.id);
+                const error = document.getElementById(field.errorId);
+                
+                if (!input.value.trim()) {
+                    input.classList.add('error');
+                    error.style.display = 'block';
+                    isValid = false;
+                } else if (field.id === 'email') {
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(input.value)) {
+                        input.classList.add('error');
+                        error.textContent = 'Please enter a valid email address';
+                        error.style.display = 'block';
+                        isValid = false;
+                    }
+                }
+            });
+            
+            if (isValid) {
+                // Change button text and add loading state
+                const submitBtn = document.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                submitBtn.disabled = true;
+                
+                // Submit the form after a short delay to show loading state
+                setTimeout(() => {
+                    this.submit();
+                }, 1500);
+            }
+        });
+        
+        // Reset error states on input
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorId = this.id + '-error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        });
+        
+        function resetErrors() {
+            document.querySelectorAll('.error').forEach(el => {
+                el.classList.remove('error');
+            });
+            
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+        
+        // Character counter for textarea
+        const textarea = document.getElementById('description');
+        const charCounter = document.createElement('div');
+        charCounter.style.fontSize = '12px';
+        charCounter.style.color = '#666';
+        charCounter.style.textAlign = 'right';
+        charCounter.style.marginTop = '5px';
+        textarea.parentNode.appendChild(charCounter);
+        
+        textarea.addEventListener('input', function() {
+            const count = this.value.length;
+            charCounter.textContent = `${count} characters`;
+            
+            if (count > 1000) {
+                charCounter.style.color = '#ff4757';
+            } else if (count > 500) {
+                charCounter.style.color = '#ffa502';
+            } else {
+                charCounter.style.color = '#666';
+            }
+        });
+    </script>
+</body>
+</html>
